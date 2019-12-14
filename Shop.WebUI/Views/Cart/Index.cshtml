@@ -1,0 +1,100 @@
+﻿@model Cart
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                @if (Model.Products.Count != 0)
+                {
+                    <h1>Sepetim</h1>
+                    <div class="goods-page">
+                        <div class="goods-data clearfix">
+                            <div class="table-wrapper-responsive">
+                                <table summary="Shopping cart">
+                                    <tbody>
+                                        <tr>
+                                            <th class="goods-page-image">Resim</th>
+                                            <th class="goods-page-description">Açıklama</th>
+                                            <th class="goods-page-ref-no">Stok Kodu</th>
+                                            <th class="goods-page-quantity">Adet</th>
+                                            <th class="goods-page-price">Birim Fiyat</th>
+                                            <th class="goods-page-total" colspan="2">Toplam Fiyat</th>
+                                        </tr>
+                                        @foreach (var cart in Model.Products)
+                                        {
+                                            <tr>
+                                                <td class="goods-page-image">
+                                                    <a href="javascript:;"><img src="~/img/Product/@cart.Products.Picture" alt="@cart.Products.ProductName"></a>
+                                                </td>
+                                                <td class="goods-page-description">
+                                                    <h3><a href="javascript:;">@cart.Products.ProductName</a></h3>
+                                                    <p><strong>Item 1</strong> - Color: Green; Size: S</p>
+                                                    <em>More info is here</em>
+                                                </td>
+                                                <td class="goods-page-ref-no">
+                                                    @cart.Products.StockCode
+                                                </td>
+                                                <td class="goods-page-quantity">
+                                                    <div class="product-quantity">
+                                                        <input id="product-quantity" name="quantity" type="text" value="@cart.Quantity" readonly class="form-control input-sm">
+                                                    </div>
+                                                </td>
+                                                <td class="goods-page-price">
+                                                    <strong>@cart.Products.UnitPrice.ToString("c")</strong>
+                                                </td>
+                                                <td class="goods-page-total">
+                                                    <strong>@((cart.Products.UnitPrice * cart.Quantity).ToString("c"))</strong>
+                                                </td>
+                                                <form asp-controller="Cart" asp-action="RemoveFromCart" method="post">
+                                                    <input type="hidden" name="productID" value="@cart.Products.ID" />
+                                                    <td class="del-goods-col">
+                                                        <button type="submit" class="del-goods">&nbsp;</button>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="shopping-total">
+                                <ul>
+                                    <li>
+                                        <em>Ürün Toplam Tutarı</em>
+                                        <strong class="price">@Model.TotalPrice().ToString("c")</strong>
+                                    </li>
+                                    <li>
+                                        <em>Kargo Ücreti</em>
+                                        <strong class="price"><span>₺</span>3.00</strong>
+                                    </li>
+                                    <li class="shopping-total-price">
+                                        <em>Toplam</em>
+                                        <strong class="price">@Model.TotalPrice().ToString("c")</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a class="btn btn-default" href="/">Alışverişe Devam Et <i class="fa fa-shopping-cart"></i></a>
+                        <a asp-action="Index" asp-controller="CheckOut" class="btn btn-primary">Satın Al <i class="fa fa-check"></i></a>
+                    </div>
+                }
+                else
+                {
+                    <h1>Sepetim</h1>
+                    <div class="shopping-cart-page">
+                        <div class="shopping-cart-data clearfix">
+                            <p>Sepetiniz Boş Alışveriş Yapmak için Güzel Bir Gün</p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->       
+    </div>
+</div>

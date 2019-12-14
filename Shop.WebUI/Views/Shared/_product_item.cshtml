@@ -1,0 +1,15 @@
+﻿@model Products
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="product-item">
+            <div class="pi-img-wrapper">
+                <img src="~/img/Product/@Model.Picture" class="img-responsive" alt="Berry Lace Dress">
+                <div>
+                    <a href="~/img/Product/@Model.Picture" class="btn btn-default fancybox-button "><span class="fa fa-search"></span></a>
+                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view"><span class="fa fa-eye"></span></a>
+                </div>
+            </div>
+            <h3><a href="/@Model.ProductName-p-@Model.StockCode">@Model.ProductName</a></h3>
+            <div class="pi-price">@Model.UnitPrice.ToString("c")</div>
+            <a href="javascript:;" class="btn btn-default add2cart">Sepete Ekle</a>
+        </div>
+        </div>

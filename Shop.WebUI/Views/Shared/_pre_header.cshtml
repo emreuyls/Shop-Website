@@ -1,0 +1,41 @@
+﻿<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>                
+                </ul>
+            </div>
+            <!-- END TOP BAR LEFT PART -->
+            <!-- BEGIN TOP BAR MENU -->
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li><a href="shop-wishlist.html">İstek Listem</a></li>
+                        <li class="langs-block">
+                            <a href="javascript:void(0);" class="current">@User.Identity.Name </a>
+                            <div class="langs-block-others-wrapper">
+                                <div class="langs-block-others">
+                                    <a href="/Profile">Profil</a>
+                                    <a href="#">Admin Penceresi</a>
+                                    <a href="#">Çıkış Yap</a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a asp-action="Login" asp-controller="Account">Giriş Yap</a></li>
+                        <li><a asp-action="Register" asp-controller="Account">Kayıt Ol</a></li>
+                    }
+
+
+                </ul>
+            </div>
+            <!-- END TOP BAR MENU -->
+        </div>
+    </div>
+</div>

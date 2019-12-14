@@ -1,0 +1,17 @@
+﻿@model BrandModel
+<h5><b>Markalar</b></h5>
+
+    <ul class="list-group margin-bottom-25 sidebar-menu">
+
+        @foreach (var brand in Model.Brands.Distinct())
+        {
+
+            <li class="list-group-item clearfix">
+                
+                    <input type="checkbox"> @brand.BrandName                
+            </li>
+
+
+        }
+
+    </ul>

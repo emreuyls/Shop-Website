@@ -1,0 +1,40 @@
+﻿@model Cart
+@{ 
+    int productCount = Model.Products.Count();
+}
+<div class="top-cart-block">
+    <div class="top-cart-info">
+        <a  class="top-cart-info-count">@productCount Adet</a>
+        <a  class="top-cart-info-value">@Model.TotalPrice().ToString("c")</a>
+    </div>
+    <i class="fa fa-shopping-cart"></i>
+    @if(productCount!=0)
+    { 
+    <div class="top-cart-content-wrapper">
+        <div class="top-cart-content">
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;">
+                <ul class="scroller" style="height: 250px; overflow: hidden; width: auto;">
+                    @foreach (var cart in Model.Products)
+                    {
+                        <li>
+                            <a href="shop-item.html"><img src="~/img/Product/@cart.Products.Picture" alt="@cart.Products.ProductName" width="37" height="34"></a>
+                            <span class="cart-content-count">@cart.Quantity X</span>
+                            <strong><a href="shop-item.html">@cart.Products.ProductName</a></strong>
+                            <em>@cart.Products.UnitPrice.ToString("c")</em>
+                            <form asp-controller="Cart" asp-action="RemoveFromCart" method="post">
+                                <input type="hidden" name="productID" value="@cart.Products.ID" />
+                                <button type="submit" class="del-goods">&nbsp;</button>
+                            </form>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="text-right">
+                <a href="/Cart" class="btn btn-default">Sepete Git</a>
+                <a href="shop-checkout.html" class="btn btn-primary">Satın Al</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
