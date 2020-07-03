@@ -4645,7 +4645,6 @@ body.ecommerce {
 .ecommerce h1, .ecommerce h2, .ecommerce h3, .ecommerce h4, .ecommerce h5, .ecommerce h6 {
 	font-family: "PT Sans Narrow", sans-serif;
 	margin: 0 0 10px;
-	text-transform: uppercase;
 }
 .ecommerce h1 {
 	font-size: 23px;
@@ -4698,13 +4697,13 @@ Header and header elements
 
 /* Navigation */
 .ecommerce .header-navigation {
-	font: 19px "PT Sans Narrow", sans-serif;
-	letter-spacing: 1px;
+	font: 14px "PT Sans Narrow", sans-serif;
+	letter-spacing: 0.2px;
 	margin: 0;
 }
 .ecommerce .header-navigation > ul > li > a {
 	color: #767f88;
-	padding: 34px 12px 32px;
+	padding: 34px 12px 32px;  
 }
 .ecommerce .header-navigation ul > li.active > a,
 .ecommerce .header-navigation ul > li > a:hover,
@@ -4726,7 +4725,7 @@ Header and header elements
 }
 
 .ecommerce .header-navigation > ul > li > .dropdown-menu {
-	margin-top: -3px;
+	margin-top: -25px;
 }
 .ecommerce .reduce-header .header-navigation > ul > li > .dropdown-menu {
 	margin-top: -3px;
@@ -5044,9 +5043,13 @@ Header and header elements
 	padding-top: 10px;
 	padding-bottom: 4px;
 }
-.product-item h3 a {
-	color: #3e4d5c;
-}
+    .product-item h3 a {
+        color: #3e4d5c;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
 .product-item h3 a:hover {
 	color: #E02222;
 }
@@ -6071,14 +6074,23 @@ select.form-control:focus {
 	box-shadow: none;
 	border-color: #999;
 }
-
+input[type=radio] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    background-color: #e94d1c;
+}
+.form-check-label {
+    font-weight: normal;
+    font-size: 16px;
+}
 input.form-control,
 textarea.form-control {
-	border-color: #dbdbdb;
-	color: #777;
-	font: 14px Arial, sans-serif;
-	border-radius: 0;
-	box-shadow: none;
+    border-color: #dbdbdb;
+    color: #777;
+    font: 14px Arial, sans-serif;
+    border-radius: 0;
+    box-shadow: none;
 }
 input.form-control:focus,
 textarea.form-control:focus {
@@ -6334,11 +6346,10 @@ body.page-header-fixed {
 
 /* Navigation */
 .header-navigation {
-	font: 15px "Open Sans", sans-serif;
+	font: 14px "Open Sans", sans-serif;
 	margin: 0 10px 0 0;
 	padding: 0;
-	float: left;
-	text-transform: uppercase;
+	float: left;	
 }
 .header-navigation ul {
 	margin: 0;
@@ -9736,4 +9747,12 @@ Styler Panel
 	}
 }
 /* END max width 320px */
-/* here you can put your own css to customize and override the theme */
+.ecommerce .header-navigation-content h4:hover {
+    background-color: #e45000 !important;
+    color:#fff !important;
+    text-decoration:none!important;
+}
+.ecommerce .header-navigation-content a:hover
+{
+    text-decoration:none !important;
+}

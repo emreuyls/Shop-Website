@@ -11,6 +11,8 @@ namespace Shop.DataAccess.Abstract
         ISuppliersRepository Suppliers { get; }
         IOrderRepository Order { get; }
         IBrandRepository Brand { get; }
+        ICustomerRepository Customer { get; }
+        IAdressRepository Adress { get; }
         int SaveChanges();
     }
 }

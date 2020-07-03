@@ -1,0 +1,73 @@
+﻿@model List<AdressModel>
+@{
+    ViewData["Title"] = "Adress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/Profile.css" rel="stylesheet" />
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Store</a></li>
+            <li class="active">My Account Page</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            @Html.Partial("_profile_sidebar")
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class=" col-md-9 col-sm-9">
+                <h1>Ev Adresim</h1>
+                @if (TempData["Success"] != null)
+                {
+                <div class="alert alert-success" role="alert">
+                    <p>@TempData["Success"]</p>
+                </div>
+                }
+                <div class="content-form-page">
+                    <div class="row">
+                        <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                            <div class="card adressCard">
+                                <div class="newAdress">
+                                    <img class="adressimg" src="~/img/Profile/location.png" alt="Add Adress" />
+                                    <a href="#" class="new-btn-adress"><span>Yeni Adres Ekle</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach (var adress in Model)
+                        {
+                            <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                <div class="card adressCard">
+                                    <div class="aCardTitle">
+                                        <h4><span>@adress.Title</span></h4>
+                                        <h5> <span>@adress.Names</span></h5>
+                                        <hr class="hr-style" />
+                                    </div>
+                                    <div class="aCardBody">
+                                        <ul>
+                                            <li><span>@adress.Adress1</span></li>
+                                            <li><span>@adress.State/@adress.City</span></li>
+                                            <li><span>@adress.Phone</span></li>
+                                        </ul>
+                                        <hr class="hr-style" />
+                                    </div>
+                                    <div class="aCardFooter">
+                                        <a class="aCardDelete" href="/Profile/AdressDelete/@adress.ID">Sil</a>
+                                        <!--TODO:Modal içerisinde adres güncelleme ve ekleme yapılacak-->
+                                        <a href="#" data-id="@adress.ID" class="btn btn-primary btn-adress">Değiştir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>  
+            <!-- END CONTENT -->
+      
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+    </div>
+</div>
+
+<div id="adressModal"></div>
+<div id="newAdressModal"></div>

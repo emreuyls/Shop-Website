@@ -4,7 +4,6 @@ body.ecommerce {
 .ecommerce h1, .ecommerce h2, .ecommerce h3, .ecommerce h4, .ecommerce h5, .ecommerce h6 {
 	font-family: "PT Sans Narrow", sans-serif;
 	margin: 0 0 10px;
-	text-transform: uppercase;
 }
 .ecommerce h1 {
 	font-size: 23px;
@@ -57,13 +56,13 @@ Header and header elements
 
 /* Navigation */
 .ecommerce .header-navigation {
-	font: 19px "PT Sans Narrow", sans-serif;
-	letter-spacing: 1px;
+	font: 14px "PT Sans Narrow", sans-serif;
+	letter-spacing: 0.2px;
 	margin: 0;
 }
 .ecommerce .header-navigation > ul > li > a {
 	color: #767f88;
-	padding: 34px 12px 32px;
+	padding: 34px 12px 32px;  
 }
 .ecommerce .header-navigation ul > li.active > a,
 .ecommerce .header-navigation ul > li > a:hover,
@@ -85,7 +84,7 @@ Header and header elements
 }
 
 .ecommerce .header-navigation > ul > li > .dropdown-menu {
-	margin-top: -3px;
+	margin-top: -25px;
 }
 .ecommerce .reduce-header .header-navigation > ul > li > .dropdown-menu {
 	margin-top: -3px;
@@ -403,9 +402,13 @@ Header and header elements
 	padding-top: 10px;
 	padding-bottom: 4px;
 }
-.product-item h3 a {
-	color: #3e4d5c;
-}
+    .product-item h3 a {
+        color: #3e4d5c;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
 .product-item h3 a:hover {
 	color: #E02222;
 }

@@ -19,6 +19,41 @@ namespace Shop.WebUI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Shop.Entity.Adress", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adress1");
+
+                    b.Property<string>("AdressTitle");
+
+                    b.Property<string>("BillingAdress");
+
+                    b.Property<string>("BillingCity");
+
+                    b.Property<string>("BillingState");
+
+                    b.Property<string>("City");
+
+                    b.Property<int?>("CustomersID");
+
+                    b.Property<string>("Names");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<string>("State");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CustomersID");
+
+                    b.ToTable("Adress");
+                });
+
             modelBuilder.Entity("Shop.Entity.Brand", b =>
                 {
                     b.Property<int>("ID")
@@ -59,25 +94,9 @@ namespace Shop.WebUI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Adress1");
-
-                    b.Property<string>("Adress2");
-
-                    b.Property<string>("BillingAdress");
-
-                    b.Property<string>("BillingCity");
-
-                    b.Property<string>("BillingCountry");
-
-                    b.Property<string>("BillingPostalCode");
-
-                    b.Property<string>("BillingRegion");
-
                     b.Property<string>("CardExpMo");
 
                     b.Property<string>("CardExpYr");
-
-                    b.Property<string>("City");
 
                     b.Property<string>("CreditCard");
 
@@ -85,23 +104,17 @@ namespace Shop.WebUI.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<bool>("Gender");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("Password");
 
                     b.Property<string>("Phone");
 
-                    b.Property<string>("PostalCode");
-
-                    b.Property<string>("ShipAdress");
-
-                    b.Property<string>("ShipPostalCode");
-
-                    b.Property<string>("ShipRegion");
-
-                    b.Property<string>("State");
-
                     b.Property<string>("SurName");
+
+                    b.Property<string>("UserID");
 
                     b.HasKey("ID");
 
@@ -405,6 +418,13 @@ namespace Shop.WebUI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("Shop.Entity.Adress", b =>
+                {
+                    b.HasOne("Shop.Entity.Customers", "Customers")
+                        .WithMany("Adress")
+                        .HasForeignKey("CustomersID");
                 });
 
             modelBuilder.Entity("Shop.Entity.Images", b =>

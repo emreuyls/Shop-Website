@@ -11,8 +11,9 @@ namespace Shop.DataAccess.Abstract
         T Get(int id);
         IQueryable<T> GetAll();
         IQueryable<T> Find(Expression<Func<T, bool>> expression);
-        void Create(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        int Create(T entity);
+        int Delete(T entity);
+        int Update(T entity);
+        int Save();
     }
 }

@@ -3,7 +3,6 @@
     ViewData["Title"] = "Index";
 }
 
-
 <div class="page-slider margin-bottom-35">
     <div id="carousel-example-generic" class="carousel slide carousel-slider">
         <!-- Indicators -->
@@ -99,17 +98,12 @@
         <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
         <div class="row margin-bottom-40">
             <!-- BEGIN SALE PRODUCT -->
-                     @await Component.InvokeAsync("NewArrivalsSlider")
+            @await Component.InvokeAsync("NewArrivalsSlider")
             <!-- END SALE PRODUCT -->
         </div>
         <!-- END SALE PRODUCT & NEW ARRIVALS -->
         <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-40 ">
-            <!-- BEGIN SIDEBAR -->
-            <div class="sidebar col-md-3 col-sm-4">
-                @await Component.InvokeAsync("SideCategoryMenu")
-            </div>
-            <!-- END SIDEBAR -->
+        <div class="row margin-bottom-40 ">         
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-8">
                 <h2>Three items</h2>

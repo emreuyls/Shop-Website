@@ -9,19 +9,22 @@ namespace Shop.DataAccess.Concrete.EntityFramework
 {
    public class EFBaseRepository<T> : IBaseRepository<T> where T:class
     {
+        //TODO: Save methodunu kontrol et ileride hata döndürme ihtimali var
         protected DbContext context;
         public EFBaseRepository(DbContext  ctx)
         {
             context = ctx;
         }
-        public void Create(T entity)
+        public int Create(T entity)
         {
              context.Set<T>().Add(entity);
+           return Save();
         }
 
-        public void Delete(T entity)
+        public int Delete(T entity)
         {
            context.Set<T>().Remove(entity);
+           return Save();
         }
 
         public IQueryable<T> Find(System.Linq.Expressions.Expression<Func<T, bool>> expression)
@@ -39,9 +42,16 @@ namespace Shop.DataAccess.Concrete.EntityFramework
             return context.Set<T>();
         }
 
-        public void Update(T entity)
+        public int Save()
+        {
+            return context.SaveChanges();
+        }
+
+        public int Update(T entity)
         {
             context.Entry<T>(entity).State = EntityState.Modified;
+            
+            return Save();
         }
     }
 }

@@ -7,13 +7,11 @@ namespace Shop.Entity
    public class Customers
     {
         public int ID { get; set; }
+        //TODO:User ID eklendi identity db den user ıd yi bura ile ilişkilendirme üzerinden 2 db ilişkisi yapılacak
+        public string UserID { get; set; }
         public string Name { get; set; }
         public string SurName { get; set; }
-        public string Adress1 { get; set; }
-        public string Adress2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string PostalCode { get; set; }
+        public bool Gender { get; set; }     
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -21,14 +19,8 @@ namespace Shop.Entity
         public string CreditCardTypeID { get; set; }
         public string CardExpMo { get; set; }
         public string CardExpYr { get; set; }
-        public string BillingAdress { get; set; }
-        public string BillingCity { get; set; }
-        public string BillingRegion { get; set; }
-        public string BillingPostalCode { get; set; }
-        public string BillingCountry { get; set; }
-        public string ShipAdress { get; set; }
-        public string ShipRegion { get; set; }
-        public string ShipPostalCode { get; set; }
+
+        public List<Adress> Adress { get; set; }
         public List<Orders> Orders { get; set; }
     }
 }

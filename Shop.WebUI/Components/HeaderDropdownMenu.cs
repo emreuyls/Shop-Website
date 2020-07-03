@@ -7,20 +7,17 @@ using System.Threading.Tasks;
 
 namespace Shop.WebUI.Components
 {
-   
-   
-    public class SideCategoryMenu:ViewComponent
-    { private ICategoryRepository repository;
-        public SideCategoryMenu(ICategoryRepository _repository)
+    public class HeaderDropdownMenu:ViewComponent
+    {
+        private ICategoryRepository repository;
+        public HeaderDropdownMenu(ICategoryRepository _repository)
         {
             repository = _repository;
         }
-
         public IViewComponentResult Invoke()
         {
-            
+
             return View(repository.Find(x=>x.PrimaryCategory||x.SeconderyCategory));
         }
-
     }
 }

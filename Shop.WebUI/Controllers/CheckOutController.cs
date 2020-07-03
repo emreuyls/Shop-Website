@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shop.WebUI.Infrastructure;
+using Shop.WebUI.Models;
 
 namespace Shop.WebUI.Controllers
 {
@@ -12,7 +14,9 @@ namespace Shop.WebUI.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+
+            return View(HttpContext.Session.GetJson<Cart>("Cart")??new Cart());
         }
     }
 }

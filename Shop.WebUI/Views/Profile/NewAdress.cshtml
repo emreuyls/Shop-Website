@@ -1,0 +1,113 @@
+﻿@model AdressModel
+
+<div class="modal fade" id="newAdressDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Adresim</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="newAdress" asp-action="NewAdress" class="form-horizontal form-without-legend" >
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Ad Soyad <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Names" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">İl <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="State" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">İlçe <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="City" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Adres <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Adress1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Adres Tanımı <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Title" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Telefon <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Phone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Fiş Adresi <span class="require">*</span></label>
+                        <label class="col-lg-8">
+                            <input id="billingComfirmed" asp-for="BillingCheck" type="checkbox" checked> Bu Adresimi Kullan
+                        </label>
+                    </div>
+                    <div class="BillingAdress">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="first-name">Fatura Adresi <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input asp-for="BillingAdress" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="first-name">Fatura İl <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input asp-for="BillingState" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="first-name">Fatura İlçe <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input asp-for="BillingCity" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="adress-update-btn" type="submit" class="btn btn-primary new-adress-submit">Kaydet</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $('.BillingAdress').hide()
+    $('#billingComfirmed').click(function () {
+        if ($(this).is(":checked")) {
+            $('.BillingAdress').hide(300)
+        }
+        else {
+            $('.BillingAdress').show(300)
+        }
+    })
+    $('#newAdress').on('submit', function (e) {
+        e.preventDefault()
+        var form = $(this).serialize()     
+        $.ajax({
+            url: "/Profile/NewAdress/",
+            type: "POST",            
+            dataType: "json",
+            data: $("#newAdress").serialize(),
+            success: function (data) {
+                if (data.success) {
+                    location.reload()
+                }
+                else {
+                  //TODO:error kısmı burada error listelenecek
+                }             
+            }
+        })
+    })
+</script>

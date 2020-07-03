@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Shop.DataAccess.Abstract;
+using Shop.Entity;
 using Shop.WebUI.IdentityCore;
 using Shop.WebUI.Models;
 
@@ -15,11 +17,13 @@ namespace Shop.WebUI.Controllers
     {
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signinManager;
+        private IUnitOfWork repository;
 
-        public AccountController(UserManager<ApplicationUser> _usermanager, SignInManager<ApplicationUser> _signinmanager)
+        public AccountController(UserManager<ApplicationUser> _usermanager, SignInManager<ApplicationUser> _signinmanager, IUnitOfWork repo)
         {
             userManager = _usermanager;
             signinManager = _signinmanager;
+            repository = repo;
         }
         [AllowAnonymous]
         [HttpGet]
@@ -69,8 +73,22 @@ namespace Shop.WebUI.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
-
+                    var reguser = userManager.Users.Where(x => x.Email == user.Email).FirstOrDefault();
+                    if(reguser!=null)
+                    {
+                        repository.Customer.Create(new Customers()
+                        {
+                            UserID = reguser.Id,
+                            Name = reguser.Name,
+                            SurName = reguser.Surname,
+                            Email = reguser.Email //TODO:burada email çakışması olabilir...
+                        });
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
                 }
             }
             return View(model);

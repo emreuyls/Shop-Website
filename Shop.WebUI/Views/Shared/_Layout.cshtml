@@ -69,7 +69,37 @@
 
             Layout.initFixHeaderWithPreHeader();
             Layout.initNavScrolling();
-        });
+
+            $('.btn-adress').on('click', function () {               
+                var adressId = $(this).attr('data-id');
+                $.ajax({
+                    url: "/Profile/AdressDetails/" + adressId,
+                    type: "GET",
+                    dataType: "html",
+                    success: function (data) {
+                        $('#adressModal').html(data)
+                        $('#adressDialog').modal('show')
+                    }
+                })
+            })
+            $('.new-btn-adress').on('click', function () {
+                $.ajax({
+                    url: "/Profile/NewAdress/",
+                    type: "GET",
+                    dataType: "html",
+                    success: function (data) {                      
+                        $('#newAdressModal').html(data)
+                        $('#newAdressDialog').modal('show')
+                    },
+                    error: function (data) {
+                        $('#newAdressDialog').modal('hide')
+
+                    }
+                })
+            })
+    
+        });    
+         
     </script>
 </body>
 

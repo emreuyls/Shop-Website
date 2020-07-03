@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_AccountLayout</title>
+    <link href="~/css/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/Fontawasome/all.css" rel="stylesheet" />
+    <link href="~/css/membershipstyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <div class="navbar-container">
+                <a class="site-logo" href="/"><img src="/assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+                <a href="/"><span class="fas fa-long-arrow-alt-left"></span> Geri dön</a>
+            </div>
+        </nav>
+    </header>
+    @RenderBody()
+
+
+    @*<footer>
+        <div class="footer-wrapper">
+            <ul>
+                <li><a href="#">Hakkımızda</a> </li>
+                <li><a href="#">Yardım</a></li>
+            </ul>
+
+        </div>
+    </footer>*@
+
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/js/Fontawesome/all.js"></script>
+</body>
+</html>

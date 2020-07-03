@@ -17,17 +17,27 @@ namespace Shop.DataAccess.Concrete.EntityFramework
         private ISuppliersRepository _suppliers;
         private IOrderRepository _order;
         private IBrandRepository _brand;
+        private ICustomerRepository _customer;
+        private IAdressRepository _adress;
+
         public IProductRepository Products
         {
             get { return _product ?? (_product = new EFProductRepository(dbContext)); }
         }
-
+       public IAdressRepository Adress
+        {
+            get { return _adress ?? (_adress = new EFAdressRepository(dbContext)); }
+        }
+        public ICustomerRepository Customer
+        {
+            get { return _customer ?? (_customer = new EFCustomerRepository(dbContext)); }
+        }
 
         public ICategoryRepository Category
         {
             get { return _category ?? (_category = new EFCategoryRepository(dbContext)); }
         }
-
+       
         public ISuppliersRepository Suppliers
         {
             get { return _suppliers ?? (_suppliers = new EFSuppliersRepository(dbContext)); }
@@ -40,7 +50,7 @@ namespace Shop.DataAccess.Concrete.EntityFramework
 
         public IBrandRepository Brand {
             get { return _brand ?? (_brand = new EFBrandRepository(dbContext));}
-        }
+        }   
 
         public void Dispose()
         {

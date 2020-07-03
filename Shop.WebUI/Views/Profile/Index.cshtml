@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<link href="~/css/Profile.css" rel="stylesheet" />
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -12,20 +12,82 @@
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
-            <!-- BEGIN SIDEBAR -->
-            <div class="sidebar col-md-3 col-sm-3">
-                <ul class="list-group margin-bottom-25 sidebar-menu">                    
-                    <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Şifre Değiştir</a></li>
-                    <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Hesabım</a></li>
-                    <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Adreslerim</a></li>
-                    <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> İstek Listem</a></li>
-                    <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> İade Taleplerim</a></li>
-                </ul>
-            </div>
+            @Html.Partial("_profile_sidebar")
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
-            <div class="col-md-9 col-sm-7">
-            Bilgilendirici Mesaj eklenecek buraya 
+            <div class="profileContent col-md-9 col-sm-7 col-xs-12">
+                <div class="profileText">
+                    <div class="profileTitle">
+                        <span>Hesabım</span>
+                    </div>
+                    <div class="profileDefinition">
+                        <span>"Hesabım" Sayfasından siparişlerinizi, iade taleplerinizi takip edebilir; üyelik bilgislerinizi güncelleme, şifre ve adres değişikliği gibi hesap ayarlarınızı kolayca yapabilirsiniz.</span>
+                    </div>
+                </div>
+                <hr class="hr-style"/>
+              
+                <div class="row">
+                    <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-5 col-xs-6">
+                        <div class="profileColum">
+                            <img src="~/img/Profile/teenage.png" />
+                            <div class="profileQuickMenuTitle">
+                                <span>Hesabım</span>
+                            </div>
+                            <ul>
+                                <li><a asp-action="Account">Hesap Bilgilerini Değiştir</a></li>
+                                <li><a asp-action="Adress"> Adresimi Değiştir</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <div class="profileColum">
+                            <img src="~/img/Profile/return.png" />
+                            <div class="profileQuickMenuTitle">
+                                <span>Sipariş İade</span>
+                            </div>
+                            <ul>
+                                <li>Ürün İade Etme</li>
+                                <li>İade Takibi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <div class="profileColum">
+                            <img src="~/img/Profile/cargo-truck.png" />
+                            <div class="profileQuickMenuTitle">
+                                <span>Siparişlerim</span>
+                            </div>
+                            <ul>
+                                <li>Kargo Takibi</li>
+                                <li>Tüm Siparişlerim</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <div class="profileColum">
+                            <img src="~/img/Profile/credit-card.png" />
+                            <div class="profileQuickMenuTitle">
+                                <span>Ödeme Yöntemleri</span>
+                            </div>
+                            <ul>
+                                <li>Kredi Kartı Bilgilerim</li>
+                                <li>İban Numaraları</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="profileQuickMenu col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <div class="profileColum">
+                            <img src="~/img/Profile/customer-service.png" />
+                            <div class="profileQuickMenuTitle">
+                                <span>Yardım</span>
+                            </div>
+                            <ul>
+                                <li>Müşteri Hizmetleri</li>
+                                <li>SSS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>              
             </div>
             <!-- END CONTENT -->
         </div>

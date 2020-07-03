@@ -1,0 +1,58 @@
+﻿@model Adress
+
+<div class="modal fade" id="adressDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Adresim</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AdressDetails" method="post"  class="form-horizontal form-without-legend">
+                    <input asp-for="ID" type="hidden" />
+                    <input asp-for="UserID" type="hidden" />
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Ad Soyad <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Names" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">İl <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="State" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">İlçe <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="City" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Adres <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Adress1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Adres Tanımı <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="AdressTitle" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="first-name">Telefon <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                            <input asp-for="Phone" class="form-control">
+                        </div>
+                    </div> 
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>        
+        </div>
+    </div>
+</div>
+

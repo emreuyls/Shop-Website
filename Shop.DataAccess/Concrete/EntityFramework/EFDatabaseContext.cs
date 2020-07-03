@@ -23,6 +23,8 @@ namespace Shop.DataAccess.Concrete.EntityFramework
         public DbSet<Suppliers> Suppliers { get; set; }
         public DbSet<Images> Images { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Adress> Adress { get; set; }
+
         public DbSet<ProductInformation> ProductInformations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

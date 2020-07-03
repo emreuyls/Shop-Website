@@ -19,6 +19,7 @@ namespace Shop.WebUI.Controllers
         }        
         public IActionResult Index(string productname, string stockcode)
         {
+
           
             return View(repository.Products.GetAll()
                 .Where(x=>x.StockCode== stockcode)

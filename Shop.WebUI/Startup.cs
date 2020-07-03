@@ -54,6 +54,7 @@ namespace Shop.WebUI
             app.UseStatusCodePages();
             app.UseSession();
             app.UseAuthentication();
+            
             app.UseMvc(route =>
             {
                 route.MapRoute(
